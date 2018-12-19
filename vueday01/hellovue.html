@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- <p>
+      {{ hello }}
+    </p> -->
+    <p v-text="hello"></p>
+
+    <!-- v-bind:title="xxx" 此时 title="xxx"中的xxx就会被解析成js代码, 可以直接访问data中的数据 -->
+    <input @mouseover="show" @click="show" :abc="abc" :name="name" type="button" value="按钮" v-bind:title="xxx">
+    <!-- $().attr('title', xxx) -->
+    <!-- 原生DOM操作中 dom对象.title  .name可以直接操作原生属性 -->
+    <!-- 如果需要操作自定义属性需要用: dom对象.setAttribute() -->
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        hello: 'vue你好!',
+        xxx: '谢俊儿',
+        name: '吴聪',
+        abc: '邰姐'
+      },
+      methods: {
+        show() {
+          console.log('秀!')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

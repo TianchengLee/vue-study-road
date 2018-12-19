@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <input @click="roll" type="button" value="动起来">
+    <input @click="stop" type="button" value="停下来">
+    <p>{{ msg }}</p>
+    <hr>
+    <input type="text" name="username" id="username">
+  </div>
+
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: { // data就是当前页面的数据仓库
+        msg: '谢俊儿说她要找2-3K的优秀前端开发工作!',
+        timerId: null
+      },
+      methods: {
+        roll() {
+          // Vue 在创建时 会将 data 和 methods中所有的成员, 挂载到自己实例对象身上
+          // 方便在methods中的方法内部进行data的操作
+          // this的指向是看方法调用时机, 将roll挂载到vm对象身上
+          // 调用时就是vm.roll()
+          // 此时 this 指向vm对象
+          // this.msg
+          // clearInterval参数如果传入的有问题也不会发生什么错误
+          // 传入的id有则清除 没有就继续执行后面的代码
+          clearInterval(this.timerId)
+          this.timerId = setInterval(() => {
+            // 动起来的原理: 把头切下来放到屁股后面
+            // 切头
+            let start = this.msg.substr(0, 1)
+            // 切尾
+            let end = this.msg.substr(1)
+
+            // Vue框架的特点: 当Model层数据发生变化时, 自动刷新View层引用的数据
+            // 便于新手玩家理解
+            this.msg = end + start
+          }, 200)
+          // useCapture  使用捕获
+          xxx.addEventListener('click', function(){}, false)
+        },
+        stop() {
+          clearInterval(this.timerId)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
