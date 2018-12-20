@@ -29,6 +29,11 @@
 <body>
   <div id="app">
     <!-- <h1 class="red thin">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
+    <!-- <h1 :class="classArr">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
+    <!-- <h1 :class="['red', 'thin']">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
+    <!-- <h1 :class="['red', 'thin', { active: flag }]">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
+    <!-- <h1 :class="{ red: true, thin: false, active: true }">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
+    <!-- <h1 :class="'active red' + (flag ? ' thin' : '')">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
 
     <!-- 第一种使用方式，直接传递一个数组，注意： 这里的 class 需要使用  v-bind 做数据绑定 -->
     <!-- <h1 :class="['thin', 'italic']">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
@@ -40,7 +45,7 @@
     <!-- <h1 :class="['thin', 'italic', {'active':flag} ]">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
 
     <!-- 在为 class 使用 v-bind 绑定 对象的时候，对象的属性是类名，由于 对象的属性可带引号，也可不带引号，所以 这里我没写引号；  属性的值 是一个标识符 -->
-    <h1 :class="classObj">这是一个很大很大的H1，大到你无法想象！！！</h1>
+    <!-- <h1 :class="classObj">这是一个很大很大的H1，大到你无法想象！！！</h1> -->
 
 
   </div>
@@ -51,6 +56,7 @@
       el: '#app',
       data: {
         flag: true,
+        classArr: ['red', 'thin'],
         classObj: { red: true, thin: true, italic: false, active: false }
       },
       methods: {}
