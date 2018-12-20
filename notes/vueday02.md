@@ -1,5 +1,73 @@
 ## vue day02 ##
 
+### 往期知识点回顾 ###
+
+1. 创建对象的方式:
+
+		// 对象字面量
+		var obj = {} // new Object()
+		
+		// 数组字面量
+		var arr = [] // new Array()
+		
+		// 正则字面量
+		var regex = /\w+/ // new RegExp()
+		
+		// 使用Object构造函数创建对象
+		var obj2 = new Object()
+		
+		// 自定义工厂函数创建对象
+		var obj3 = createObj('zs')
+		
+		function createObj(name) {
+			return {
+				name: name
+			}
+		}
+		
+		// 自定义构造函数创建对象
+		var obj4 = new Student('ls')
+		
+		function Student(name) {
+			this.name = name
+		}
+		
+		// 判断对象的类型, typeof判断对象永远都是 'object'
+		console.log(typeof obj4) // 'object'
+		
+		// instanceof 判断对象的具体类型
+		// instanceof 判断依据 是看对象是否在 该构造函数的原型链上
+		// A instanceof B 就是看B是否在A的原型链上
+		console.log(obj4 instanceof Student) // true
+		console.log(obj4 instanceof Object) // true
+
+	总结: 创建对象 永远都离不开 构造函数, 最终一定是 new 构造函数创建出来的对象, 所以不存在几种创建对象的方式, 只有一种, 就是通过构造函数创建对象
+
+2. 闭包
+
+	函数内部包含一个函数, 在内部函数中访问了外部函数中的局部成员
+
+		function outer() {
+			var a = 10
+			function inner() {
+				// 在下面这行代码执行时就会产生 closure 闭包空间
+				var b = a + 20
+			}
+			return inner
+		}
+
+		outer()()
+
+	在开发中尽量减少使用闭包, 因为闭包一定会导致内存泄漏
+
+	内存泄漏: 本该被释放的内存, 没有被释放
+
+3. 事件委托(事件代理)
+
+	> 一般用在动态创建元素还需要绑定事件时
+
+	> 因为直接绑定事件, 页面加载时就会绑定一次, 但是动态添加的元素就无法被绑定事件了, 而事件委托的原理是依赖于事件冒泡, 也就是说事件被绑定在父元素身上, 如果将来有新加入的子元素也会响应事件
+
 ### 设置类样式 ###
 
 总结来说使用属性绑定的方式设置样式, 一般就是设置 对象 或 数组
@@ -112,3 +180,12 @@
 - 原理: 由于使用v-for渲染列表时, vue不会记录每个列表项和数据之间的关系, 都是统一按照索引进行渲染的, 如果此时有一个复选框表单元素被勾选, 然后将新的元素插入到列表的前面, 导致整个列表顺序发生变化, 那么复选框也会跟随索引而勾选 不会跟随数据勾选
 
 - 解决方式: 在使用v-for时加上 :key 属性绑定, 绑定的值为每项数据的唯一标识, 而且数据类型必须是number / string 一般都用id作为唯一标识, 如果没有id时也可以使用索引 实在不行用name也行
+
+### v-if 和 v-show ###
+
+- v-if和v-show都是用于控制元素的显示隐藏
+- v-if有较高的切换渲染消耗
+- v-show有较高的初始渲染消耗
+
+总结: 如果需要频繁的切换显示隐藏推荐使用v-show, 如果只需要一次切换, 或者一次都没有, 则使用v-if
+
