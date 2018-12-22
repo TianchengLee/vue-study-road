@@ -28,7 +28,8 @@
 
         <label>
           Name:
-          <input type="text" class="form-control" v-model="name" @keyup.f2="add">
+          <!-- <input type="text" class="form-control" v-model="name" @keydown.49.prevent="add"> -->
+          <input type="text" class="form-control" v-model="name" @keydown.enter="add">
         </label>
 
         <!-- 在Vue中，使用事件绑定机制，为元素指定处理函数的时候，如果加了小括号，就可以给函数传参了 -->
@@ -106,6 +107,7 @@
 
 
     // 自定义全局按键修饰符
+    Vue.config.keyCodes.f1 = 112
     Vue.config.keyCodes.f2 = 113
 
     // 使用  Vue.directive() 定义全局的指令  v-focus
@@ -113,19 +115,19 @@
     // 但是： 在调用的时候，必须 在指令名称前 加上 v- 前缀来进行调用
     //  参数2： 是一个对象，这个对象身上，有一些指令相关的函数，这些函数可以在特定的阶段，执行相关的操作
     Vue.directive('focus', {
-      bind: function (el) { // 每当指令绑定到元素上的时候，会立即执行这个 bind 函数，只执行一次
-        // 注意： 在每个 函数中，第一个参数，永远是 el ，表示 被绑定了指令的那个元素，这个 el 参数，是一个原生的JS对象
-        // 在元素 刚绑定了指令的时候，还没有 插入到 DOM中去，这时候，调用 focus 方法没有作用
-        //  因为，一个元素，只有插入DOM之后，才能获取焦点
-        // el.focus()
-      },
+      // bind: function (el) { // 每当指令绑定到元素上的时候，会立即执行这个 bind 函数，只执行一次
+      //   // 注意： 在每个 函数中，第一个参数，永远是 el ，表示 被绑定了指令的那个元素，这个 el 参数，是一个原生的JS对象
+      //   // 在元素 刚绑定了指令的时候，还没有 插入到 DOM中去，这时候，调用 focus 方法没有作用
+      //   //  因为，一个元素，只有插入DOM之后，才能获取焦点
+      //   // el.focus()
+      // },
       inserted: function (el) {  // inserted 表示元素 插入到DOM中的时候，会执行 inserted 函数【触发1次】
         el.focus()
         // 和JS行为有关的操作，最好在 inserted 中去执行，放置 JS行为不生效
       },
-      updated: function (el) {  // 当VNode更新的时候，会执行 updated， 可能会触发多次
+      // updated: function (el) {  // 当VNode更新的时候，会执行 updated， 可能会触发多次
 
-      }
+      // }
     })
 
     // 自定义一个 设置字体颜色的 指令
@@ -137,6 +139,7 @@
         // console.log(binding.name)
         // 和样式相关的操作，一般都可以在 bind 执行
 
+        //  v-color="'blue'"
         // console.log(binding.value)
         // console.log(binding.expression)
 
