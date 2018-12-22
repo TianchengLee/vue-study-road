@@ -131,20 +131,31 @@
     })
 
     // 自定义一个 设置字体颜色的 指令
-    Vue.directive('color', {
-      // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有了一个内联的样式
-      // 将来元素肯定会显示到页面中，这时候，浏览器的渲染引擎必然会解析样式，应用给这个元素
-      bind: function (el, binding) {
-        // el.style.color = 'red'
-        // console.log(binding.name)
-        // 和样式相关的操作，一般都可以在 bind 执行
+    // Vue.directive('color', {
+    //   // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有了一个内联的样式
+    //   // 将来元素肯定会显示到页面中，这时候，浏览器的渲染引擎必然会解析样式，应用给这个元素
+    //   bind: function (el, binding) {
+    //     // el.style.color = 'red'
+    //     // console.log(binding.name)
+    //     // 和样式相关的操作，一般都可以在 bind 执行
 
-        //  v-color="'blue'"
-        // console.log(binding.value)
-        // console.log(binding.expression)
+    //     //  v-color="'blue'"
+    //     // console.log(binding.value)
+    //     // console.log(binding.expression)
 
-        el.style.color = binding.value
-      }
+    //     el.style.color = binding.value
+    //   }
+    // })
+    Vue.directive('color', function (el, binding) {
+      // el.style.color = 'red'
+      // console.log(binding.name)
+      // 和样式相关的操作，一般都可以在 bind 执行
+
+      //  v-color="'blue'"
+      // console.log(binding.value)
+      // console.log(binding.expression)
+
+      el.style.color = binding.value
     })
 
 

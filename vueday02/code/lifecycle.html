@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{ msg }}
+  </div>
+
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '班级毒瘤谢俊'
+      },
+      methods: {
+        show() {
+          console.log(this.msg)
+        }
+      },
+      beforeCreate() { // 初始化对象, 此时data和methods还没有被挂载到vm实例身上
+        // 在此处不能使用data和methods中的成员
+        // 在此处可以发 但没必要 因为收到结果后也可能无法挂载到data中
+      },
+      created () { // data和methods已经被挂载到vm实例中
+        // 在此处可以使用data和methods中的所有成员
+        // 如果需要发送ajax请求, 在此处最合适
+        // vue-resource : 只针对浏览器做了封装, 只封装了XMLHttpRequest对象
+        // axios : 因为尤雨溪推荐了 所以我们用, 同时封装了XMLHttpRequest和http模块, axios可以在node中发送HTTP请求
+      },
+      beforeMount () { // compile: 编译  在编译完模板页面(纯字符串并没有放到页面的DOM树中)
+        // 即将挂载到DOM树上时执行的钩子函数
+        // console.log(document.getElementById('app').innerText)
+      },
+      mounted () {
+        // console.log(document.getElementById('app').innerText)
+      }
+    })
+  </script>
+</body>
+
+</html>

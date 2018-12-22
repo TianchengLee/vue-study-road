@@ -21,6 +21,7 @@ server.on('request', function (req, res) {
       gender: '女孩子'
     }
 
+    //  'showInfo123({name:"xjj", age: 18, gender: "女孩子"})'
     var scriptStr = `${query.callback}(${JSON.stringify(data)})`
     // res.end 发送给 客户端， 客户端去把 这个 字符串，当作JS代码去解析执行
     res.end(scriptStr)

@@ -120,3 +120,27 @@ Vue提供了按键修饰符解决这个问题
 	<input type="text" v-focus />
 
 2. 私有指令
+
+	只能在当前vm实例内部使用
+
+	在Vue构造函数的配置对象中directives节点下, 和data/methods同级
+
+		let vm = new Vue({
+			el: '#app',
+			data: {},
+			methods: {},
+			filters: {},
+			directives: {
+				//focus: {
+				//	bind(){},
+				//	inserted() {}
+				//}
+				// 如果focus指令只需要在bind和update阶段做具体的操作,则可以简写为一个函数(全局指令也同理):
+				focus() {
+
+				}
+			}
+		})
+
+
+
