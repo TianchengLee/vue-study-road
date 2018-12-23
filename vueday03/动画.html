@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+  /* .v-enter,
+  .v-leave-to {
+    opacity: 0;
+    transform: translateX(200px)
+  }
+
+  .v-enter-active, 
+  .v-leave-active {
+    transition: all 0.5s ease;
+  } */
+  .xj-enter,
+  .xj-leave-to {
+    opacity: 0;
+    transform: translateX(200px)
+  }
+
+  .xj-enter-active, 
+  .xj-leave-active {
+    transition: all .5s ease;
+  }
+
+  /* .v-enter-to,
+  .v-leave {
+    opacity: 1;
+  } */
+  </style>
+
+  <script src="lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" value="点我" @click="flag = !flag">
+
+    <transition name="xj">
+      <h1 v-if="flag">社会毒瘤谢俊</h1>
+    </transition>
+
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: false
+      },
+      methods: {}
+    })
+  </script>
+</body>
+
+</html>
