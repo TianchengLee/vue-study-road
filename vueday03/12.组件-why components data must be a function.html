@@ -27,15 +27,21 @@
   </template>
 
   <script>
+
     var dataObj = { count: 0 }
 
     // 这是一个计数器的组件, 身上有个按钮,每当点击按钮,让 data 中的 count 值 +1
     Vue.component('counter', {
       template: '#tmpl',
-      data: function () {
+      data() {
         // return dataObj
-        return { count: 0 }
+        return {
+          count: 0
+        }
       },
+      // data: {
+
+      // },
       methods: {
         increment() {
           this.count++

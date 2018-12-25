@@ -54,7 +54,12 @@
       directives: {},
       components: { // 定义实例内部私有组件的
         login: {
-          template: '#tmpl2'
+          template: '#tmpl2',
+          data: function() {
+            return {
+              
+            }
+          }
         }
       },
 

@@ -27,7 +27,7 @@
     <a href="" @click.prevent="comName='register'">注册</a>
 
     <!-- 通过 mode 属性,设置组件切换时候的 模式 -->
-    <transition mode="out-in">
+    <transition mode="in-out">
       <component :is="comName"></component>
     </transition>
 
