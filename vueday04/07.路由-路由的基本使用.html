@@ -70,6 +70,8 @@
     // 2. 创建一个路由对象， 当 导入 vue-router 包之后，在 window 全局对象中，就有了一个 路由的构造函数，叫做 VueRouter
     // 在 new 路由对象的时候，可以为 构造函数，传递一个配置对象
     var routerObj = new VueRouter({
+      // 本地打开只能使用 hash , 不能使用history, 如果需要使用history模式, 必须后台服务器给予支持
+      // mode: 'history',
       // route // 这个配置对象中的 route 表示 【路由匹配规则】 的意思
       routes: [ // 路由匹配规则 
         // 每个路由规则，都是一个对象，这个规则对象，身上，有两个必须的属性：
