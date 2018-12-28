@@ -6,7 +6,7 @@ import $ from 'jquery'
 // import语法支持引入css文件
 import './src/css/index.css'
 import './src/css/1.less'
-// import './src/css/2.scss'
+import './src/css/2.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 $(function () {
