@@ -125,9 +125,10 @@
         el.focus()
         // 和JS行为有关的操作，最好在 inserted 中去执行，放置 JS行为不生效
       },
-      // updated: function (el) {  // 当VNode更新的时候，会执行 updated， 可能会触发多次
+      // update: function (el) {  // 当VNode更新的时候，会执行 updated， 可能会触发多次
 
       // }
+      // unbind: function() {}
     })
 
     // 自定义一个 设置字体颜色的 指令
@@ -146,14 +147,16 @@
     //     el.style.color = binding.value
     //   }
     // })
+    // 函数简写, 因为大部分情况自定义指令都只会用到个别生命周期,例如bind, 所以第二个参数可以直传一个函数, 
+    // 这个函数就表示bind和update两个生命周期钩子
     Vue.directive('color', function (el, binding) {
       // el.style.color = 'red'
       // console.log(binding.name)
       // 和样式相关的操作，一般都可以在 bind 执行
 
-      //  v-color="'blue'"
-      // console.log(binding.value)
-      // console.log(binding.expression)
+      //  v-color="'blue'" 
+      // console.log(binding.value) // 获取表达式的结果 blue
+      // console.log(binding.expression) // 获取完整的表达式字符串 'blue'
 
       el.style.color = binding.value
     })
@@ -269,6 +272,31 @@
       directives: { // 自定义私有指令
         'fontweight': { // 设置字体粗细的
           bind: function (el, binding) {
+            // TypeScript 
+            // 基于类的开发语言: Java C# C++ Python
+            // 基于原型的开发语言: JavaScript
+            // 面向对象
+            // abstract class Person implement Object {
+            //   private String name;
+            //   public Person(String name) {
+
+            //   }
+            // }
+
+            // new Person()
+
+            
+
+            // function Person() {
+
+            // }
+            // function fn() {
+
+            // }
+
+            // new Person()
+            // fn()
+
             el.style.fontWeight = binding.value
           }
         },

@@ -233,7 +233,7 @@ webpack.config.js文件配置如下:
 
 1. 装包, 注意需要安装sass-loader和node-sass两个包
 
-		npm i sass-loader node-sass webpack -D
+		npm i sass-loader node-sass -D
 
 2. 配置
 
