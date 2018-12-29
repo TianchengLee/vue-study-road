@@ -43,4 +43,10 @@
 
 [笔记](./notes/vueday07.md "第七天笔记")
 
-[代码](./vueday05/webpack-demo "第七天代码")
+[代码](./webpack-demo "第七天代码")
+
+## vue-day08
+
+[笔记](./notes/vueday08.md "第八天笔记")
+
+[代码](./webpack-demo "第八天代码")

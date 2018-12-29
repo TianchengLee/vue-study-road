@@ -3,6 +3,8 @@ const path = require('path')
 // 1. 导入webpack
 const webpack = require('webpack')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 // 导入HtmlWebpackPlugin
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -25,14 +27,15 @@ module.exports = {
     new HtmlWebpackPlugin({ // 用于帮助我们自动生成HTML文件的
       template: './src/index.html', // 如果不指定template, 默认生成一个空的HTML5页面, 指定template表示从哪个HTML文件编译一个新的HTML出来
       filename: 'index.html' // 便于开发人员自己查看
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       // less-loader
       { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] },
-      { test: /\.(scss|sass)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+      // { test: /\.(scss|sass)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
       {
         test: /\.(png|jpg|gif|jpeg|bmp|webp)$/,
         use: ['url-loader?limit=8192&name=[hash:8]-[name].[ext]']
@@ -45,9 +48,22 @@ module.exports = {
         //   }
         // ]
       },
-      { test: /\.(eot|svg|ttf|woff|woff2)$/, use: ['url-loader'] }
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, use: ['url-loader'] },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.vue$/, use: 'vue-loader'}
     ]
   },
+  // resolve: {
+  //   alias: {
+  //     'vue$': 'vue/dist/vue.js'
+  //   }
+  // },
   // express.Router()
   mode: 'development' // 开发  developer 开发者  programmer 程序员
 }
+
+// function fn() { }
+
+// fn.call(null, 1, 2, 3, 4)
+// fn.apply(null, [1, 2, 3, 4])
+// fn.bind() // ES5之后才有的  一般不用
