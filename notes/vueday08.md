@@ -139,7 +139,7 @@
 
 		{ test: /\.vue$/, use: 'vue-loader'}
 
-3. 在webpack添加VueLoaderPlugin插件
+3. 在webpack添加`VueLoaderPlugin`插件
 
 	**注意: 这一个插件是必须的!**
 

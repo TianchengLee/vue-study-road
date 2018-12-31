@@ -50,7 +50,7 @@ module.exports = {
       },
       { test: /\.(eot|svg|ttf|woff|woff2)$/, use: ['url-loader'] },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.vue$/, use: 'vue-loader'}
+      { test: /\.vue$/, use: 'vue-loader' }
     ]
   },
   // resolve: {
