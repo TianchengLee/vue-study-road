@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="button" value="获取数据" id="btn">
+
+  <!-- 如果想兼容低版本IE, 只能使用jQuery1.12.X这个版本 -->
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+      $('#btn').on('click', function () {
+        $.ajax({
+          url: './data.json',
+          type: 'get',
+          dataType: 'json'
+        })
+          .then(function (data) {
+            console.log(data)
+          })
+      })
+    });
+  </script>
+</body>
+
+</html>

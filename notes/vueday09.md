@@ -38,4 +38,3 @@
 	如果安装失败, 建议ctrl + C终止后执行`cnpm i`
 
 4. 安装完成后所有的webpack配置都已配好, 注意: 但是所有的样式预处理loader都没有安装, 需要使用less就安装less和less-loader, 无需自己配置, 只需要安装即可
-
